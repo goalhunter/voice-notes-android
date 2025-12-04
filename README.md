@@ -120,34 +120,6 @@ For long transcriptions, the app uses:
 - **Playback**: Listen to recordings with seek controls
 - **Delete**: Swipe to delete notes
 
-## 🔧 Configuration
-
-### Memory Optimization
-For long transcriptions, RAG limits are configured in `LLMManager.kt`:
-```kotlin
-MAX_INPUT_CHARS = 8000    // ~2000-2500 tokens
-CHUNK_SIZE = 1500          // Characters per chunk
-MAX_CHUNKS = 4             // Top chunks retrieved
-```
-
-### Model Selection
-You can swap models by changing files in `assets/models/`:
-- **Whisper**: Any GGML-format Whisper model (tiny, base, small, etc.)
-- **LLM**: Any Gemma INT4 model compatible with MediaPipe
-- **Embeddings**: Any ONNX sentence transformer model
-
-## 📊 Performance
-
-### Device Requirements
-- **RAM**: 2-4 GB recommended
-- **Storage**: 1 GB free space
-- **Processor**: ARM64 (most modern Android devices)
-
-### Benchmarks (on Samsung Galaxy S20)
-- **Transcription**: ~1-2x realtime (1 min audio = 1-2 min processing)
-- **Summarization**: ~5-10 seconds for typical note
-- **Q&A**: ~3-5 seconds per question with RAG
-
 ## 🤝 Contributing
 
 Contributions are welcome! This project was built on top of:
