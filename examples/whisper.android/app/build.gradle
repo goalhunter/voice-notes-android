@@ -1,0 +1,106 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
+}
+
+android {
+    namespace 'com.whispercppdemo'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.whispercppdemo"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.0'
+    }
+
+    // Prevent compression of large model files
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    // Don't compress .task files (MediaPipe models)
+    aaptOptions {
+        noCompress "task"
+    }
+}
+
+// Dependency version management
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        // Force compatible androidx.core version for llamacpp-kotlin
+        if (details.requested.group == 'androidx.core' && details.requested.name == 'core-ktx') {
+            details.useVersion '1.12.0'
+        }
+        if (details.requested.group == 'androidx.core' && details.requested.name == 'core') {
+            details.useVersion '1.12.0'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':lib')
+    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation 'androidx.compose.material:material-icons-core:1.5.0'
+    implementation 'androidx.compose.material:material-icons-extended:1.5.0'
+    implementation 'androidx.compose.material3:material3:1.1.1'
+    implementation "androidx.compose.ui:ui:1.5.0"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.5.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.6.1'
+    implementation "com.google.accompanist:accompanist-permissions:0.28.0"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
+
+    // Room dependencies
+    implementation "androidx.room:room-runtime:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
+    ksp "androidx.room:room-compiler:2.5.2"
+
+    // ONNX Runtime for embeddings
+    implementation 'com.microsoft.onnxruntime:onnxruntime-android:1.16.3'
+
+    // Google AI Edge for on-device LLM inference with Gemma
+    implementation 'com.google.mediapipe:tasks-genai:0.10.27'
+
+    // llama.cpp for on-device LLM inference
+    // TODO: Re-enable when Kotlin version compatibility is resolved
+    // implementation('io.github.ljcamargo:llamacpp-kotlin:0.1.2')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.5.0"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.5.0"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.5.0"
+}
