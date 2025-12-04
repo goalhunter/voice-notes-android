@@ -114,12 +114,6 @@ For long transcriptions, the app uses:
   - Uses RAG to find relevant sections for accurate answers
   - Works great for long recordings (meetings, lectures, etc.)
 
-### Managing Notes
-- **Browse**: View all notes in chronological order
-- **Search**: Find notes by semantic similarity
-- **Playback**: Listen to recordings with seek controls
-- **Delete**: Swipe to delete notes
-
 ## 🤝 Contributing
 
 Contributions are welcome! This project was built on top of:
