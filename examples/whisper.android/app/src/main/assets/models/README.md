@@ -4,7 +4,7 @@ Download the required model files and place them in this directory.
 
 ## Download Links
 
-Get all models from: [Google Drive Link - Add your link here]
+Get all models from: [Google Drive](https://drive.google.com/drive/folders/1dO2Wqe6b-FBWRtLeiktaCbH-PBy-wca0?usp=sharing)
 
 ## Required Files
 
