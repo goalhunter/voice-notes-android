@@ -1,14 +1,14 @@
 # Voice Notes - AI-Powered Note-Taking App
 
-![Voice Notes](https://user-images.githubusercontent.com/1991296/235238348-05d0f6a4-da44-4900-a1de-d0707e75b763.jpeg)
-
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 **A fully-featured Android voice note-taking app with on-device AI, built on [whisper.cpp](https://github.com/ggml-org/whisper.cpp)**
 
 ## 🎥 Demo
 
-Watch the app in action: [YouTube Demo](https://youtube.com/shorts/wVuslMTra90?si=r9UT8NwER3nNPjX-)
+[![Watch Demo](https://img.youtube.com/vi/wVuslMTra90/maxresdefault.jpg)](https://youtube.com/shorts/wVuslMTra90?si=r9UT8NwER3nNPjX-)
+
+*Click the image above to watch the demo on YouTube*
 
 ## ✨ Features
 
